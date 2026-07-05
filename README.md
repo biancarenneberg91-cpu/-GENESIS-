@@ -14,6 +14,46 @@ Erstellt nie ungefragt etwas — es gibt immer erst eine Vorschau zum Bestätige
 | `/server-backup-liste` | Zeigt gespeicherte Backups für diesen Server |
 | `/server-backup-anwenden name:` | Wendet ein Backup an - ergänzt nur Fehlendes, löscht nie etwas |
 | `/server-backup-loeschen name:` | Löscht ein gespeichertes Backup |
+| `/server-loeschen ziel:` | Löscht Kanäle, Rollen oder alles - mit Vorschau und Bestätigung |
+| `/genesis-stats` | Zeigt die globale Statistik über alle Server hinweg |
+
+## Gamification
+
+- Beim Erstellen läuft erst eine kurze **Boot-Sequenz** im Terminal-Stil
+  ("> genesis.core --init"), danach zufällige, augenzwinkernde Bau-Sprüche
+  ("Kalibriere Hierarchie-Matrix...", "Bestechen die Rate-Limit-Gnome...")
+- Jeder fertige Server bekommt ein **Tier-Ranking** je nach Größe:
+  🌱 Starter · ✨ B-Tier · 🔥 A-Tier · 🌌 S-Tier
+- **10% Chance auf einen 🌈 Critical Build** — ein seltener, besonderer Moment
+  mit goldenem Embed und Sonderflair
+- **Server-Level-System**: jeder Server sammelt über mehrere Nutzungen hinweg
+  Lebenszeit-Punkte und steigt von 🌱 Rookie Architect bis 👑 GENESIS LEGEND auf,
+  mit eigenem Fortschrittsbalken zur nächsten Stufe
+- Bei besonders großen Builds (15+ Elemente) oder einem Critical Build feiert
+  der Bot automatisch mit Reaktionen (⚡🎉🚀) auf der Abschlussnachricht
+- `/genesis-stats` zeigt, wie viele Server, Kanäle und Rollen Genesis
+  insgesamt schon über alle Server hinweg erschaffen hat — ein netter
+  Showoff-Fakt für die eigene Community
+
+## Der Löschbefehl (wichtig: unwiderruflich!)
+
+`/server-loeschen` kann vier Dinge:
+
+- **Eine bestimmte Kategorie** (inkl. ihrer Kanäle)
+- **Alle Kanäle und Kategorien** (Rollen bleiben erhalten)
+- **Alle selbst erstellten Rollen** (Kanäle bleiben erhalten)
+- **ALLES** — kompletter Reset
+
+Bei jeder Auswahl siehst du zuerst eine **Vorschau** mit genauer Auflistung, was
+gelöscht würde, bevor irgendetwas passiert. Bei der Option "ALLES" gibt es eine
+zusätzliche Sicherung: du musst das Wort **LÖSCHEN** in ein Textfeld eintippen,
+bevor der Bot wirklich etwas löscht.
+
+`@everyone` und vom System verwaltete Rollen (z.B. Integrationen, Bot-eigene
+Rollen) werden nie angefasst, egal welche Option gewählt wird.
+
+Dieser Befehl braucht **Administrator**-Rechte bei der ausführenden Person
+(höhere Hürde als bei den anderen Befehlen, wegen der destruktiven Wirkung).
 
 Alle Befehle brauchen bei der ausführenden Person die Berechtigung
 **"Server verwalten"**.
@@ -29,6 +69,13 @@ mit allen geplanten Kategorien, Kanälen und Rollen, dazu drei Buttons:
   hinzu"), die KI baut daraufhin einen neuen Plan, den du wieder bestätigen
   oder weiter anpassen kannst
 - **❌ Abbrechen** — nichts wird erstellt
+
+## Visuelle Extras
+
+Beim Erstellen zeigt Genesis einen **Live-Fortschrittsbalken**, der sich Schritt
+für Schritt aktualisiert (welche Rolle/Kanal gerade angelegt wird), gefolgt von
+einem Abschluss-Embed mit Gesamtstatistik. Der Bot-Status in der Mitgliederliste
+zeigt außerdem live, auf wie vielen Servern er aktiv ist ("👀 X Server erschaffen").
 
 ## Setup
 
