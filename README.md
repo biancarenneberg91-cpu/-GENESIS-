@@ -9,13 +9,14 @@ Erstellt nie ungefragt etwas — es gibt immer erst eine Vorschau zum Bestätige
 | Befehl | Was er macht |
 |---|---|
 | `/server-erstellen thema:` | KI erstellt einen Bauplan zum freien Thema (z.B. "Polizei-Server", "Anime-Community") |
-| `/server-vorlagen` | Fertige Vorlagen zur Auswahl (Polizei, Gaming, Support, Wirtschaft, Community) |
+| `/server-vorlagen` | Fertige Vorlagen zur Auswahl (jetzt 10 Stück) |
 | `/server-backup-erstellen name:` | Sichert die aktuelle Serverstruktur unter einem Namen |
 | `/server-backup-liste` | Zeigt gespeicherte Backups für diesen Server |
 | `/server-backup-anwenden name:` | Wendet ein Backup an - ergänzt nur Fehlendes, löscht nie etwas |
 | `/server-backup-loeschen name:` | Löscht ein gespeichertes Backup |
 | `/server-loeschen ziel:` | Löscht Kanäle, Rollen oder alles - mit Vorschau und Bestätigung |
 | `/genesis-stats` | Zeigt die globale Statistik über alle Server hinweg |
+| `/credits` | Zeigt Infos zum Entwickler, Tech-Stack und weiteren Links |
 
 ## Gamification
 
@@ -131,3 +132,34 @@ aus, für dauerhafte Backups über viele Monate empfiehlt sich das Volume.
   exakt gleichen Namen), bestehende bleiben unangetastet
 - Ohne `GROQ_API_KEY` funktionieren `/server-vorlagen` und Backups weiterhin
   normal, nur `/server-erstellen` und der "Anpassen"-Button brauchen die KI
+
+## KI-Verbesserungen
+
+- Läuft jetzt auf **openai/gpt-oss-20b** (Groq hat `llama-3.1-8b-instant` am
+  17.06.2026 als veraltet markiert) - schneller und deutlich bessere Ergebnisse
+- Die KI vergibt jetzt **Kanal-Beschreibungen (Topics)** automatisch passend zum Thema
+- Sensible Kanäle (z.B. Team-Besprechungen, interne Berichte) können automatisch
+  auf bestimmte Rollen **beschränkt** werden (🔒-Symbol in der Vorschau) - für
+  alle anderen Mitglieder unsichtbar, ganz ohne manuelles Nacharbeiten
+- Ein Sicherheitscheck stellt sicher, dass sich die KI keine Rollennamen ausdenkt,
+  die gar nicht existieren - eine erfundene Rolle in "visible_to" wird automatisch
+  verworfen statt einen kaputten Verweis zu erzeugen
+
+## Vorlagen-Bibliothek (10 Stück)
+
+🚔 Polizei/Behörden-RP · 🎮 Gaming-Community · 🛠️ Support-Server ·
+💼 Wirtschafts-RP · 🌐 Allgemeine Community · 🌸 Anime/Weeb-Community ·
+🎨 Kunst & Design · 🎵 Musik-Community · 🎥 Streamer/Content Creator ·
+💻 Tech/Programmierer-Community
+
+Alle Vorlagen nutzen bereits gezielt gesetzte Emojis, Kanal-Beschreibungen
+(Topics) und teils automatisch eingeschränkte Team-Kanäle - genau wie bei
+der KI-Generierung.
+
+## Emoji-Verhalten (KI + Vorlagen)
+
+Kategorien bekommen immer ein passendes Emoji. Bei Kanälen wird gezielt
+ausgewählt: die wichtigsten/auffälligsten Kanäle (Regeln, Ankündigungen,
+besondere Voice-Channels, Highlights) bekommen ein treffendes Emoji als
+Präfix, alltägliche Chat-Kanäle (allgemein, off-topic) bleiben schlicht -
+Qualität vor Menge, damit es nicht überladen wirkt.
