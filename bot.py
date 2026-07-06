@@ -278,13 +278,15 @@ async def apply_plan(guild: discord.Guild, plan: dict, merge: bool = False, prog
 
             try:
                 if ch_type == "voice":
-                    await category.create_voice_channel(
-                        ch_name, reason="Server-Setup-Bot", overwrites=overwrites
-                    )
+                    voice_kwargs = {"reason": "Server-Setup-Bot"}
+                    if overwrites is not None:
+                        voice_kwargs["overwrites"] = overwrites
+                    await category.create_voice_channel(ch_name, **voice_kwargs)
                 else:
-                    await category.create_text_channel(
-                        ch_name, topic=topic, reason="Server-Setup-Bot", overwrites=overwrites
-                    )
+                    text_kwargs = {"topic": topic, "reason": "Server-Setup-Bot"}
+                    if overwrites is not None:
+                        text_kwargs["overwrites"] = overwrites
+                    await category.create_text_channel(ch_name, **text_kwargs)
                 counts["channels"] += 1
                 lock_icon = "🔒" if visible_to else ""
                 await tick(f"{'🔊' if ch_type == 'voice' else '#'} {ch_name}{lock_icon}")
